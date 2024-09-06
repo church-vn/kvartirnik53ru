@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квартирник | Проект в разработке!
+    </title>
+    <meta description="Квартирник в Великом Новгороде">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css"> <!-- fontawesome -->
+    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/tooplate-antique-cafe.css">
+    <meta property="og:image" content="img/og_image_kvartirnik.jpg" />
+    
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(98025834, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true,
+         webvisor:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/98025834" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ <!-- /Yandex.Metrika counter -->
+</head>
+<body>    
+    <!-- Intro -->
+    <div id="intro" class="parallax-window" data-parallax="scroll" data-image-src="img/antique-cafe-bg-01.jpg">
+        <div class="container mx-auto px-2 tm-intro-width">
+            <div class="sm:pb-60 sm:pt-48 py-20">
+                <div class="bg-black bg-opacity-70 p-12 mb-5 text-center">
+                    <h1 style="font-size: 2rem;" class="text-white text-5xl tm-logo-font mb-5">Квартирник</h1>
+                    <b style="color: white !important;"><br>Великий Новгород</b>
+                    <p class="text-white leading-8 text-sm font-light">
+                    Проект находится в разработке!
+                    </p>
+                </div>    
+                <div class="bg-black bg-opacity-70 p-10 mb-5">
+                    <p class="text-white leading-8 text-sm font-light text-center">
+                        <b>Краткая сводка из википедии</b>
+                    </p>
+                    <p style="font-size: 0.9rem; line-height: 1.6rem;" class="text-white leading-8 text-sm font-light">
+                        Кварти́рник — концерт, проводящийся в обычной квартире, в домашних условиях. Как правило, на нём выступает небольшое количество музыкантов с акустическими инструментами.
+                    	<a rel="nofollow" href="https://ru.wikipedia.org/wiki/Квартирник" target="_blank">Википедия..</a>. 
+                    </p>
+                    <hr>
+                    
+                </div>
+                
+            </div>
+        </div>        
+    </div>
+  
+
+
+
+    
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="js/form.js"></script>
+    <script>
+
+        function checkAndShowHideMenu() {
+            if(window.innerWidth < 768) {
+                $('#tm-nav ul').addClass('hidden');                
+            } else {
+                $('#tm-nav ul').removeClass('hidden');
+            }
+        }
+
+        $(function(){
+            var tmNav = $('#tm-nav');
+            tmNav.singlePageNav();
+
+            checkAndShowHideMenu();
+            window.addEventListener('resize', checkAndShowHideMenu);
+
+            $('#menu-toggle').click(function(){
+                $('#tm-nav ul').toggleClass('hidden');
+            });
+
+            $('#tm-nav ul li').click(function(){
+                if(window.innerWidth < 768) {
+                    $('#tm-nav ul').addClass('hidden');
+                }                
+            });
+
+            $(document).scroll(function() {
+                var distanceFromTop = $(document).scrollTop();
+
+                if(distanceFromTop > 100) {
+                    tmNav.addClass('scroll');
+                } else {
+                    tmNav.removeClass('scroll');
+                }
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>
