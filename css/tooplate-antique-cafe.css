@@ -1,7 +1,9 @@
 
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #666;
 }
 
@@ -23,7 +25,7 @@ p a:hover {
 footer span a { color: #FFF; }
 
 .tm-logo-font {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .tm-container {
@@ -124,6 +126,7 @@ textarea::-ms-input-placeholder { /* Microsoft Edge */
 .tm-text-2xl {
     font-size: 1.2rem;
     line-height: 2rem;
+    font-weight: 300;
 }
 
 @media (min-width: 768px) {
