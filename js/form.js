@@ -7,13 +7,31 @@ const sendButton = document.getElementById('sendButton');
 
 sendButton.addEventListener('click', (event) => {
 event.preventDefault();
-const message = 'Имя : ' + sendName.value + '\nГость или исполнитель: ' + messageInput.value + " " + '\nНомер телефона: ' + " " + sendTel.value;
+const message = 'Тема сообщения: Регистрация на квартирник' + '\nИмя : ' + sendName.value + '\nНомер телефона: ' + " " + sendTel.value + '\nРоль: ' + messageInput.value + " ";
 if (message) {
 axios.post(`${URL_API}bot${token}/sendMessage`, {
 chat_id: chatId,
 text: message,
 })
-.then(response => console.log(response), alert('Ваше сообщение успешно отправлено!✅ \nМы обязательно свяжемся с вами! \nСпасибо!💚'))
+.then(response => console.log(response), alert('Регистрация на квартирник прошла успешно! ✅'))
 .catch(error => console.error(error));
 }
 });
+
+// форма на popup
+const messageInput_kvartirnik = document.getElementById('messageInput_kvartirnik');
+const sendButton_kvartirnik = document.getElementById('sendButton_kvartirnik');
+
+sendButton_kvartirnik.addEventListener('click', (event) => {
+event.preventDefault();
+const message = 'Тема сообщения: ' + messageInput_kvartirnik.value + '\nИмя: ' + sendName_kvartirnik.value + '\nНомер телефона: ' + sendTel_kvartirnik.value + '\nРоль: ' + messageInputpass_kvartirnik.value;
+if (message) {
+axios.post(`${URL_API}bot${token}/sendMessage`, {
+chat_id: chatId,
+text: message,
+})
+.then(response => console.log(response), alert('Регистрация на квартирник прошла успешно! ✅'))
+.catch(error => console.error(error));
+}
+});
+
