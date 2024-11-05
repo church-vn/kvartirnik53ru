@@ -7,7 +7,7 @@ const sendButton = document.getElementById('sendButton');
 
 sendButton.addEventListener('click', (event) => {
 event.preventDefault();
-const message = 'Тема сообщения: Регистрация на квартирник' + '\nИмя : ' + sendName.value + '\nНомер телефона: ' + " " + sendTel.value + '\nРоль: ' + messageInput.value + " ";
+const message = 'Тема сообщения: Регистрация на квартирник' + '\nИмя : ' + sendName.value + '\nНомер телефона: ' + " " + sendTel.value + '\nРоль: исполнитель' + messageInput.value + " ";
 if (message) {
 axios.post(`${URL_API}bot${token}/sendMessage`, {
 chat_id: chatId,

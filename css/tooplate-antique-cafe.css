@@ -113,7 +113,7 @@ textarea::-ms-input-placeholder { /* Microsoft Edge */
 }
 @media screen and (max-width: 768px) {
     #tm-nav.scroll-mobile {
-        background-color: rgba(0,0,0,0.7);
+        background-color: rgba(0,0,0,0.9);
     }
 }
 
@@ -356,3 +356,5 @@ div.privacy_policy {
 #contact input:focus {
     border-radius: 0.5em !important;
 }
+
+
