@@ -31,3 +31,39 @@ closePopupButtonSubmit_kvartirnik.addEventListener('click',() => { // Вешае
     popup_kvartirnik.classList.remove('active'); // И с окна
 });
 
+
+
+
+
+
+// правки для Рождества
+// JavaScript для фиксации навбара
+document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.getElementById('tm-nav');
+    const navbarOffset = navbar.offsetTop - 90; // Учитываем изначальное смещение
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', function () {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > navbarOffset) {
+            navbar.classList.add('fixed');
+            navbar.style.top = '0';
+        } else {
+            navbar.classList.remove('fixed');
+            navbar.style.top = '90px';
+        }
+
+        // Дополнительно проверяем направление прокрутки
+        if (currentScrollY < lastScrollY && currentScrollY < navbarOffset) {
+            navbar.classList.remove('fixed');
+            navbar.style.top = '90px';
+        }
+
+        lastScrollY = currentScrollY;
+    });
+});
+
+
+
+
