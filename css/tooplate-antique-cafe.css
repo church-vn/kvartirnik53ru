@@ -885,17 +885,23 @@ select.form-select option:hover {
 
 
 
-
-
-/* статичный фон на весь сайт. Кирпичи */
-body {
-    background-image: url('../img/background_header_0.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* чтобы фон был статичен */
-    background-repeat: no-repeat;
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/background_header_0.jpg') center/cover no-repeat;
+    z-index: -1; /* чтобы фон был за контентом */
 }
 
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    body::before {
+        background-attachment: scroll; /* или убрать fixed */
+    }
+}
 
 
 .neon-btn {
