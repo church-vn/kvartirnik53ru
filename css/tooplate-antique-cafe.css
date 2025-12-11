@@ -311,16 +311,15 @@ ul.parent_event_rules {
     justify-content: center;
     color: #fff;
     font-size: 14px;
-    background: #df7366;
+    background: transparent;
     cursor: pointer;
     transition: 0.5s all;
 	line-height: 1.75em;
 	font-weight: 300;
-	font-family: 'Source Sans Pro';
 }
 
 .popup_kvartirnik button:hover {
-    background: #ef8376;
+    background: transparent;
     color:#fff;
     transition: 0.5s all;
 }
@@ -712,3 +711,252 @@ div.privacy_policy {
     .xmas-popup-charity .xmas-popup-close:hover {
       background: #b71c1c;
     }
+
+
+
+
+
+
+
+
+
+
+
+#check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #cfd0d3;
+  cursor: pointer;
+  user-select: none;
+  width: auto; 
+  flex-direction: row;
+}
+
+label#check input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 8px; 
+  height: 8px;
+  min-width: 8px; 
+  min-height: 8px;
+  border: 2px solid #cfd0d3;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+  background-color: #d73b3b;
+  border-color: #d73b3b;
+}
+
+.checkbox-label input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 12px;
+  color: white;
+}
+
+/* Подсветка при наведении */
+.checkbox-label input[type="checkbox"]:hover {
+  box-shadow: 0 0 4px rgba(215, 59, 59, 0.6);
+}
+
+
+
+
+/* Стили для уведомления (mainreg pop-up) */
+.mainreg-popup-notification {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 9999;
+  text-align: center;
+  width: 300px;
+}
+
+.mainreg-popup-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.mainreg-popup-close-btn {
+  background-color: #d73b3b;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.mainreg-popup-close-btn:hover {
+  background-color: #b92f2f;
+}
+
+
+
+/* Стили для select */
+select.form-select {
+  height: 45px;
+  font-size: 14px;
+  outline: none;
+  border: 1px solid #cfd0d3;
+  border-radius: 0.5em;
+  padding: 10px 18px;
+  background: transparent;
+  color: white;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: 0.5s all;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+select.form-select:focus {
+  border: 1px solid #df7366 !important;
+  box-shadow: 0 0 10px #b67533;
+  transition: 0.5s all;
+}
+
+option.form-select {
+  background-color: #233b47;
+  color: white;
+  font-size: 16px;
+}
+
+select.form-select option:hover {
+  background-color: #b92f2f;
+  color: #fff;
+}
+
+
+/*
+#intro {
+    background-image: url('../img/background_header_0.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#menu {
+    background-image: url('../img/background_header_00.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#about {
+    background-image: url('../img/background_header.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#where_and_when {
+    background-image: url('../img/guitar_3_1.jpg');
+    background-size: cover;
+    background-position: center;
+}*/
+/*
+#intro, #menu, #about, #where_and_when {
+    background-size: cover;       
+    background-position: inherit !important;  
+    background-repeat: no-repeat; 
+    width: 100%;
+    min-height: 100%;          
+}
+#intro, #menu, #about, #where_and_when {
+    background-size: contain !important;
+    background-repeat-y: inherit;
+}
+*/
+
+
+
+
+
+
+/* статичный фон на весь сайт. Кирпичи */
+body {
+    background-image: url('../img/background_header_0.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* чтобы фон был статичен */
+    background-repeat: no-repeat;
+}
+
+
+
+.neon-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #00eaff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff inset;
+    transition: 0.3s;
+}
+
+.neon-btn:hover {
+    box-shadow: 0 0 18px #00eaff, 0 0 28px #00eaff inset;
+}
+
+
+.neon-btn-form {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+
+    border: 2px solid #00eaff;
+    border-radius: 12px;
+
+    background: rgba(0, 0, 0, 0.4);
+
+    /* Без дёрганья — резервируем место под тень */
+    box-shadow: 
+        0 0 18px rgba(0, 234, 255, 0),
+        0 0 28px rgba(0, 234, 255, 0) inset;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+
+    cursor: pointer;
+    will-change: transform, box-shadow;
+}
+
+.neon-btn-form:hover {
+    box-shadow:
+        0 0 18px #00eaff,
+        0 0 28px #00eaff inset;
+}
+
+
+/* header padding top */
+.pt_header {
+    padding-top: 12rem !important;
+}
+
+
+
+
+
+
