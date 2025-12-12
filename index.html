@@ -774,7 +774,7 @@
 <!-- Кнопка Благотворительности -->
   <div class="xmas-btn-charity" onclick="openXmasPopup()">
     Тематика квартирника
-    <div class="xmas-gift">🎁</div>
+    <div class="xmas-gift">🎵</div>
     <!-- Снежинки внутри кнопки -->
     <div class="snowflakes">
       <div class="snowflake" style="left: 10%;">❄</div>
@@ -799,104 +799,39 @@
 
 
 
+<audio id="charityAudio" preload="auto">
+    <source src="audio/we-wish-you-a-merry-christmas-muzikalnaya-shkatulka.mp3" type="audio/mpeg">
+</audio>
+<audio id="kvartirnikAudio" preload="auto">
+    <source src="audio/we-wish-you-a-merry-christmas-muzikalnaya-shkatulka.mp3" type="audio/mpeg">
+</audio>
 
 
 
 
-
-        <script src="js/jquery-371min.js"></script>
-        <script src="js/jquerymaskedinputmin.js"></script>
-        <script>
-            $("input[name='phone']").mask("+7(999) 999-9999");
-          
-          $(".bezvalue_wrap").html("<input class='bezvalue'  type='text' name='bezvalue' value='' />");  
-           $(".bezvalue").val("Dolly Duck");
-           $(".bezvalue").hide();
-           
-           
-           $('.datatitle').on('click',function(){
-          var mysuperdata = $(this).attr('data-title');
-          $('#titlezagalovor').html(mysuperdata);
-           
-          });
-          </script>
-
-
-
+    
     <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquerymaskedinputmin.js"></script>
+        
+
+
     <script src="js/parallax.min.js"></script>
     <script src="js/jquery.singlePageNav.min.js"></script>
-    <script>
 
 
 
 
 
-        function checkAndShowHideMenu() {
-            if(window.innerWidth < 768) {
-                $('#tm-nav ul').addClass('hidden');                
-            } else {
-                $('#tm-nav ul').removeClass('hidden');
-            }
-        }
 
-        $(function(){
-            var tmNav = $('#tm-nav');
-            tmNav.singlePageNav();
 
-            checkAndShowHideMenu();
-            window.addEventListener('resize', checkAndShowHideMenu);
 
-            $('#menu-toggle').click(function(){
-                $('#tm-nav ul').toggleClass('hidden');
-            });
 
-            $('#tm-nav ul li').click(function(){
-                if(window.innerWidth < 768) {
-                    $('#tm-nav ul').addClass('hidden');
-                }                
-            });
-
-            $(document).scroll(function() {
-                var distanceFromTop = $(document).scrollTop();
-
-                if(distanceFromTop > 100) {
-                    tmNav.addClass('scroll');
-                } else {
-                    tmNav.removeClass('scroll');
-                }
-            });
-            
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        });
-    </script>
-<!-- кнопка благотворительности -->
-<!-- charity button -->
-<script>
-    // Открытие popup
-    function openXmasPopup() {
-      document.querySelector('.xmas-popup-charity').style.display = 'block';
-      document.querySelector('.xmas-popup-overlay').style.display = 'block';
-    }
-
-    // Закрытие popup
-    function closeXmasPopup() {
-      document.querySelector('.xmas-popup-charity').style.display = 'none';
-      document.querySelector('.xmas-popup-overlay').style.display = 'none';
-    }
-  </script>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/main.js"></script>
     <script src="assets_xmas/js/yuiloader-dom-event.js" id="xmas-decoration-yuiloader-js"></script>
     <script src="assets_xmas/js/holiday_bells.js" id="xmas-decoration-holiday-bells-js"></script>
+
+
 </body>
 </html>

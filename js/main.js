@@ -1,12 +1,11 @@
 // ========================
-// POPUP KVARTIRNIK
+// GLOBAL VARIABLES
 // ========================
-let popupBg_kvartirnik = document.querySelector('.popup__bg_kvartirnik');
-let popup_kvartirnik = document.querySelector('.popup_kvartirnik');
-let openPopupButtons_kvartirnik = document.querySelectorAll('.open-popup_kvartirnik'); 
-let closePopupButton_kvartirnik = document.querySelector('.close-popup_kvartirnik'); 
 let scrollPosition = 0;
 
+// ========================
+// SCROLL LOCK FUNCTIONS
+// ========================
 function lockScroll() {
     scrollPosition = window.scrollY;
     document.documentElement.classList.add('lock-scroll');
@@ -21,35 +20,55 @@ function unlockScroll() {
     window.scrollTo(0, scrollPosition);
 }
 
-// открытие popup
+// ========================
+// POPUP KVARTIRNIK
+// ========================
+const popupBg_kvartirnik = document.querySelector('.popup__bg_kvartirnik');
+const popup_kvartirnik = document.querySelector('.popup_kvartirnik');
+const openPopupButtons_kvartirnik = document.querySelectorAll('.open-popup_kvartirnik'); 
+const closePopupButton_kvartirnik = document.querySelector('.close-popup_kvartirnik'); 
+const kvartirnikAudio = document.getElementById("kvartirnikAudio");
+
+// Открытие popup + музыка
 openPopupButtons_kvartirnik.forEach(button => {
     button.addEventListener('click', e => {
         e.preventDefault();
         popupBg_kvartirnik.classList.add('active');
         popup_kvartirnik.classList.add('active');
         lockScroll();
+
+        kvartirnikAudio.currentTime = 0;
+        kvartirnikAudio.play().catch(()=>{});
     });
 });
 
-// закрытие popup по кресту
+// Закрытие popup по кресту
 if (closePopupButton_kvartirnik) {
     closePopupButton_kvartirnik.addEventListener('click', () => {
         popupBg_kvartirnik.classList.remove('active');
         popup_kvartirnik.classList.remove('active');
         unlockScroll();
+
+        kvartirnikAudio.pause();
+        kvartirnikAudio.currentTime = 0;
     });
 }
 
-// закрытие по клику на фон
+// Закрытие по клику на фон
 document.addEventListener('click', e => {
     if (e.target === popupBg_kvartirnik) {
         popupBg_kvartirnik.classList.remove('active');
         popup_kvartirnik.classList.remove('active');
         unlockScroll();
+
+        kvartirnikAudio.pause();
+        kvartirnikAudio.currentTime = 0;
     }
 });
 
-// проверка всех обязательных полей
+// ========================
+// FORM VALIDATION KVARTIRNIK
+// ========================
 function checkFormValidityKvartirnik() {
     const fields = ['sendName_kvartirnik','sendTel_kvartirnik','messageInputguest_or_performer_kvartirnik'];
     return fields.every(id => document.getElementById(id)?.value.trim()) &&
@@ -57,8 +76,10 @@ function checkFormValidityKvartirnik() {
 }
 
 // ========================
-// ПОДАЧА ЗАЯВКИ — ФОРМА
+// FORM SUBMISSION
 // ========================
+const loadingPopup = document.getElementById("mainregLoadingPopup");
+
 document.getElementById('contactForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
@@ -74,16 +95,15 @@ document.getElementById('contactForm').addEventListener('submit', async function
         consent: document.querySelector('input[name="consent"]').checked ? "✅ Да" : "❌ Нет"
     };
 
-    // 👇 Сразу закрываем форму и основной popup
+    // Закрываем форму и popup
     document.getElementById('contactForm').reset();
     popupBg_kvartirnik.classList.remove('active');
     popup_kvartirnik.classList.remove('active');
     unlockScroll();
 
-    // 👇 Показываем окно ожидания
+    // Показываем loading popup
     loadingPopup.style.display = "block";
 
-    // Скрываем окно ожидания через 3 секунды (или можно 6)
     setTimeout(() => {
         loadingPopup.style.display = "none";
     }, 5000);
@@ -91,19 +111,40 @@ document.getElementById('contactForm').addEventListener('submit', async function
     try {
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyrpOx4KjWAD9UnbIRFE3v6k3vQaX0nzvP9KS8HSn5_ZYIsDNbinUr4brRZgaCH--UD/exec';
         await fetch(scriptURL, { method: 'POST', body: JSON.stringify(formData) });
-
-        // после успешной отправки показываем success-popup
         finalizeFormSubmit(true);
     } catch (error) {
         console.error('Ошибка при отправке:', error);
-        // если произошла ошибка, показываем error-popup
         finalizeFormSubmit(false);
     }
 });
 
+// ========================
+// POST-SUBMISSION HANDLERS
+// ========================
+function finalizeFormSubmit(success) {
+    if (success) {
+        showMainregPopup('mainregSuccessPopup');
+        document.getElementById('contactForm').reset();
+        popupBg_kvartirnik.classList.remove('active');
+        popup_kvartirnik.classList.remove('active');
+        unlockScroll();
+    } else {
+        showMainregPopup('mainregErrorPopup');
+    }
+}
+
+function showMainregPopup(popupId) {
+    const popup = document.getElementById(popupId);
+    popup.style.display = 'block';
+
+    const closeBtn = popup.querySelector('.mainreg-popup-close-btn');
+    if (closeBtn) closeBtn.addEventListener('click', () => popup.style.display = 'none');
+
+    setTimeout(() => popup.style.display = 'none', 15000);
+}
 
 // ========================
-// КАПИТАЛИЗАЦИЯ ПЕРВОЙ БУКВЫ
+// CAPITALIZE FIRST LETTER
 // ========================
 function capitalizeFirstLetter(input) {
     input.value = input.value.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ");
@@ -115,40 +156,38 @@ function capitalizeFirstLetter(input) {
 });
 
 // ========================
-// ФУНКЦИИ ПОСЛЕ ОТПРАВКИ
+// POPUP CHARITY BUTTON
 // ========================
-function finalizeFormSubmit(success) {
-    if (success) {
-        showMainregPopup('mainregSuccessPopup');
-        document.getElementById('contactForm').reset();
+const charityBtn = document.querySelector(".xmas-btn-charity");
+const charityPopup = document.querySelector(".xmas-popup-charity");
+const charityOverlay = document.querySelector(".xmas-popup-overlay");
+const charityAudio = document.getElementById("charityAudio");
 
-        // закрываем основной popup
-        popupBg_kvartirnik.classList.remove('active');
-        popup_kvartirnik.classList.remove('active');
-        unlockScroll();
-    } else {
-        showMainregPopup('mainregErrorPopup');
-    }
+function openCharityPopup() {
+    charityPopup.style.display = 'block';
+    charityOverlay.style.display = 'block';
+    charityAudio.currentTime = 0;
+    charityAudio.play().catch(()=>{});
 }
 
-// показ уведомления success/error
-function showMainregPopup(popupId) {
-    const popup = document.getElementById(popupId);
-    popup.style.display = 'block';
-
-    const closeBtn = popup.querySelector('.mainreg-popup-close-btn');
-    if (closeBtn) closeBtn.addEventListener('click', () => popup.style.display = 'none');
-
-    setTimeout(() => popup.style.display = 'none', 15000);
+function closeCharityPopup() {
+    charityPopup.style.display = 'none';
+    charityOverlay.style.display = 'none';
+    charityAudio.pause();
+    charityAudio.currentTime = 0;
 }
 
-const loadingPopup = document.getElementById("mainregLoadingPopup");
+if(charityBtn) charityBtn.addEventListener('click', openCharityPopup);
+if(charityOverlay) charityOverlay.addEventListener('click', closeCharityPopup);
+const charityCloseBtn = charityPopup?.querySelector(".xmas-popup-close");
+if(charityCloseBtn) charityCloseBtn.addEventListener("click", closeCharityPopup);
 
-// правки для Рождества
-// JavaScript для фиксации навбара
+// ========================
+// NAVBAR FIXED ON SCROLL
+// ========================
 document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.getElementById('tm-nav');
-    const navbarOffset = navbar.offsetTop - 90; // Учитываем изначальное смещение
+    const navbarOffset = navbar.offsetTop - 90;
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', function () {
@@ -162,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function () {
             navbar.style.top = '90px';
         }
 
-        // Дополнительно проверяем направление прокрутки
         if (currentScrollY < lastScrollY && currentScrollY < navbarOffset) {
             navbar.classList.remove('fixed');
             navbar.style.top = '90px';
@@ -172,3 +210,52 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// ========================
+// MENU TOGGLE AND SINGLE PAGE NAV
+// ========================
+function checkAndShowHideMenu() {
+    if(window.innerWidth < 768) {
+        $('#tm-nav ul').addClass('hidden');                
+    } else {
+        $('#tm-nav ul').removeClass('hidden');
+    }
+}
+
+$(function(){
+    const tmNav = $('#tm-nav');
+    tmNav.singlePageNav();
+
+    checkAndShowHideMenu();
+    window.addEventListener('resize', checkAndShowHideMenu);
+
+    $('#menu-toggle').click(function(){
+        $('#tm-nav ul').toggleClass('hidden');
+    });
+
+    $('#tm-nav ul li').click(function(){
+        if(window.innerWidth < 768) {
+            $('#tm-nav ul').addClass('hidden');
+        }                
+    });
+
+    $(document).scroll(function() {
+        const distanceFromTop = $(document).scrollTop();
+        if(distanceFromTop > 100) {
+            tmNav.addClass('scroll');
+        } else {
+            tmNav.removeClass('scroll');
+        }
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+});
+
+// ========================
+// JQUERY PHONE MASK AND OTHER INITIALIZATION
+// ========================
+$("input[name='phone']").mask("+7(999) 999-9999");
