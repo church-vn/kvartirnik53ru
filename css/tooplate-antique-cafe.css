@@ -883,8 +883,7 @@ select.form-select option:hover {
 */
 
 
-
-
+/* Фон для ПК */
 body::before {
     content: "";
     position: fixed;
@@ -892,16 +891,20 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../img/background_header_0.jpg') center/cover no-repeat;
-    z-index: -1; /* чтобы фон был за контентом */
+    background: url('../img/background_header_0_1_desktop.jpg') center/cover no-repeat;
+    z-index: -1;
 }
 
-/* Мобильные устройства */
+/* Фон для мобильных устройств */
 @media (max-width: 768px) {
     body::before {
-        background-attachment: scroll; /* или убрать fixed */
+        background-image: url('../img/background_header_0_1_mobile.jpg');
+        background-attachment: scroll;    /* чтобы не скроллило странно */
+        background-size: cover;
+        background-position: center;
     }
 }
+
 
 
 .neon-btn {
@@ -966,3 +969,12 @@ body::before {
 
 
 
+#contactForm {
+    border-radius: 12px !important;
+}
+
+
+
+.bg-opacity-80 {
+    --tw-bg-opacity: 0.88 !important;
+}
