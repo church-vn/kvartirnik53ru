@@ -782,10 +782,13 @@ label#check input[type="checkbox"] {
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 12px;
   z-index: 9999;
   text-align: center;
   width: 300px;
+  box-shadow:
+  0 0 18px #B026FF,
+  0 0 28px #B026FF;
 }
 
 .mainreg-popup-content p {
