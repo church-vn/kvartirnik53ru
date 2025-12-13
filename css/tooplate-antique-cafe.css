@@ -978,3 +978,18 @@ body::before {
 .bg-opacity-80 {
     --tw-bg-opacity: 0.88 !important;
 }
+
+
+
+
+.neon-btn--kvartirnik {
+    line-height: 20px;
+}
+
+/* Подзаголовок под кнопкой */
+.neon-btn__subtitle {
+    display: block;
+    font-size: 10px !important;
+    line-height: 10px !important;
+    font-weight: 100;
+}
