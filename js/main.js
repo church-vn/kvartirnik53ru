@@ -83,6 +83,11 @@ const loadingPopup = document.getElementById("mainregLoadingPopup");
 document.getElementById('contactForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
+    if (kvartirnikAudio) {
+        kvartirnikAudio.pause();
+        kvartirnikAudio.currentTime = 0;
+    }
+
     if (!checkFormValidityKvartirnik()) {
         alert('Пожалуйста, заполните все обязательные поля!');
         return;
