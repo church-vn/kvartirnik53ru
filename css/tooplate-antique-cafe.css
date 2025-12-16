@@ -199,12 +199,13 @@ ul.parent_event_rules {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(38, 31, 31, 0.714);
+    /*background: rgba(38, 31, 31, 0.714);*/
+    background: rgba(0,0,0,0.85);
     opacity: 0; 
     pointer-events: none; 
     transition: 0.5s all;
 	z-index: 99999;
-	backdrop-filter: blur(4px) !important;
+    overflow: auto;
 }
 
 .popup__bg_kvartirnik.active { 
@@ -213,15 +214,20 @@ ul.parent_event_rules {
     transition: 0.5s all;
 }
 
+
+
 .popup_kvartirnik {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0); 
-    background: #000000c1;
+    /*background: #000000c1;*/
+    background: #111;
     width: 400px;
     padding: 25px;
     transition: 0.5s all;
+    overflow-y: auto;
+    max-height: 90vh;
 }
 
 .popup_kvartirnik.active { 
@@ -323,6 +329,19 @@ ul.parent_event_rules {
     color:#fff;
     transition: 0.5s all;
 }
+
+@media screen and (max-width: 768px) {
+  .popup_kvartirnik {
+    padding: 20px 20px 80px 20px;
+  }
+}
+
+.lock-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
 /* ============== */
 /* end popup_kvartirnik*/
 /* ============== */
@@ -996,3 +1015,8 @@ body::before {
     line-height: 10px !important;
     font-weight: 100;
 }
+
+
+
+
+
