@@ -1020,3 +1020,33 @@ body::before {
 
 
 
+.contacts-icons {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    max-width: 200px;      
+    margin: 0 auto;       
+}
+
+.contacts-icons a {
+    color: #ffffff;       
+    font-size: 32px;       
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.contacts-icons a:hover {
+    opacity: 0.7;
+}
+
+
+
+
+
+
+/* Скрыть иконку на кнопке регистрации на мобильных */
+@media (max-width: 768px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
