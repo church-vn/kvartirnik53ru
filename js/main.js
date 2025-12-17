@@ -264,3 +264,20 @@ $(function(){
 // JQUERY PHONE MASK AND OTHER INITIALIZATION
 // ========================
 $("input[name='phone']").mask("+7(999) 999-9999");
+
+// ========================
+// Copy phone
+// ========================
+function copyPhone() {
+    const phone = '+79221387487';
+    const hint = document.getElementById('copyHint');
+
+    navigator.clipboard.writeText(phone).then(() => {
+        hint.style.display = 'inline';
+
+        clearTimeout(hint._timeout);
+        hint._timeout = setTimeout(() => {
+            hint.style.display = 'none';
+        }, 2000);
+    });
+}
