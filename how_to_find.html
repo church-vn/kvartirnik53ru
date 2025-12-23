@@ -2,181 +2,138 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Оплата участия — Квартирник</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Оплата участия в мероприятии Квартирник">
+    <title>Как нас найти — Квартирник</title>
 
+    <!-- Шрифты (можно убрать, если не нужны) -->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        body {
             font-family: 'Raleway', sans-serif;
-            background: #0f0f0f;
-            color: #ffffff;
+            background: radial-gradient(circle at top, #1a1a1a, #000);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* Верхняя панель */
+        .top-bar {
+            width: 100%;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
-        .card {
-            background: rgba(0,0,0,0.8);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        .back-btn {
+            text-decoration: none;
+            color: #ffd86b;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 216, 107, 0.4);
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 216, 107, 0.15);
+            box-shadow: 0 0 12px rgba(255, 216, 107, 0.4);
         }
 
         h1 {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 16px;
-        }
-
-        .price {
-            text-align: center;
+            margin: 18px 0 12px;
             font-size: 1.4rem;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-
-        .qr-block {
             text-align: center;
-            margin-bottom: 24px;
         }
 
-        .qr-block img {
-            max-width: 170px;
+        /* Контейнер видео */
+        .video-wrapper {
             width: 100%;
-            border-radius: 12px;
-            background: #fff;
-            padding: 12px;
+            max-width: 420px;          /* ширина как у рилсов */
+            aspect-ratio: 9 / 16;      /* строго вертикальное */
+            background: #000;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
         }
 
-        .pay-link {
-            display: block;
-            text-align: center;
-            background: #f5c542;
-            color: #000;
-            padding: 14px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 20px 0;
-            transition: 0.2s;
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #000;
         }
 
-        .pay-link:hover {
-            background: #ffd966;
-        }
-
-        .info {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 24px;
-            text-align: center;
-            opacity: 0.95;
-        }
-
-        .requisites {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 20px;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .requisites strong {
-            display: block;
-            margin-top: 10px;
-        }
-
-        footer {
-            text-align: center;
+        .hint {
+            margin: 14px 16px 30px;
             font-size: 0.85rem;
-            opacity: 0.6;
-            margin-top: 24px;
+            color: #ccc;
+            text-align: center;
+            opacity: 0.85;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="index.html" style="
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: #f5c542;
-    color: #000;
-    padding: 10px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    transition: 0.2s;
-    z-index: 1000;
-">
-    ← Главная
-</a>
 
-<div class="container">
-    <div class="card">
-
-        <h1>Оплата участия в мероприятии</h1>
-
-        <div class="price">
-            Сумма к оплате: <strong>500 ₽</strong>
-        </div>
-
-        <div class="info">
-    Для подтверждения участия необходимо произвести оплату удобным способом.<br>
-    После оплаты сохраните чек и отправьте его в чат с администратором мероприятия.<br><br>
-    <strong>Чек об оплате будет направлен вам в чате после подтверждения платежа.</strong>
-        </div>
-
-
-        <div class="qr-block">
-            <img src="https://kvartirnik53.ru/img/qr_pay.png" alt="QR-код для оплаты">
-        </div>
-
-        <a class="pay-link" href="https://www.tinkoff.ru/rm/r_hyjUeqfIko.MARlSqOuTv/6JxMr56405" target="_blank">
-            Перейти к оплате онлайн
-        </a>
-
-        <div class="requisites">
-            <strong>Получатель:</strong>
-            Андронов Александр Игоревич
-
-            <strong>Номер счета:</strong>
-            42301810900082042743
-
-            <strong>Назначение платежа:</strong>
-            Перевод средств по договору № 8448185899  
-            Андронов Александр Игоревич  
-            НДС не облагается
-
-            <strong>Банк-получатель:</strong>
-            АО «ТБанк»
-
-            <strong>БИК:</strong>
-            044525974
-
-            <strong>Корреспондентский счет:</strong>
-            30101810145250000974
-
-            <strong>ИНН:</strong>
-            7710140679
-
-            <strong>КПП:</strong>
-            771301001
-        </div>
-
-        <footer>
-            © Квартирник · Оплата участия
-        </footer>
-
+    <!-- Верхняя кнопка -->
+    <div class="top-bar">
+        <a href="index.html" class="back-btn">← На главную</a>
     </div>
-</div>
+
+    <h1>Как нас найти 📍</h1>
+
+    <!-- Видео -->
+    <div class="video-wrapper">
+        <video
+            id="howToFindVideo"
+            src="video/how_to_find.mp4"
+            controls
+            playsinline
+            preload="metadata"
+        ></video>
+    </div>
+
+    <div class="hint">
+        Короткое видео с маршрутом и ориентирами
+    </div>
+
+    <!-- JS прямо в странице -->
+    <script>
+        const video = document.getElementById('howToFindVideo');
+
+        // Автопауза при уходе со страницы
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                video.pause();
+            }
+        });
+
+        // Пример: старт с начала при повторном открытии
+        window.addEventListener('pageshow', () => {
+            video.currentTime = 0;
+        });
+    </script>
 
 </body>
 </html>
